@@ -1,11 +1,7 @@
-import "dotenv/config";
-import express from "express";
 import morgan from "morgan";
-
-const app = express();
-
-app.listen(4000, () => {
-  console.log("Holi");
-});
+import app from "./app.js";
+import { notFound } from "./middleware/error/errorMiddleware.js";
 
 app.use(morgan("dev"));
+
+app.use(notFound);
