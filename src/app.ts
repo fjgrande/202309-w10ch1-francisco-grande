@@ -1,7 +1,6 @@
 import "dotenv/config";
 import express from "express";
 import chalk from "chalk";
-import { notFound } from "./middleware/error/errorMiddleware";
 
 const app = express();
 const port = process.env.PORT ?? 4000;
