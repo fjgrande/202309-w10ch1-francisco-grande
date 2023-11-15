@@ -11,12 +11,14 @@ class ThingsController {
   }
 
   public getThingById(req: Request, res: Response) {
-    const thingId = parseInt(req.params.thingId, 10);
+    const { thingId } = req.params;
+
     try {
-      const thing = thingsRepository.getThingById(thingId);
+      const thing = thingsRepository.getThingById(+thingId);
+
       res.status(200).json({ thing });
     } catch {
-      res.status(404).json();
+      res.status(404).json({ error: "This thing doesn't exist" });
     }
   }
 }
