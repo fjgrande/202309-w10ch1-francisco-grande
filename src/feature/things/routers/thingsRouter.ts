@@ -1,10 +1,11 @@
 import { Router } from "express";
 import things from "../data/things.js";
+import ThingsController from "../controller/ThingsController.js";
 
 const thingsRouter = Router();
-thingsRouter.get("/", (_req, res) => {
-  res.status(200).json({ things });
-});
+const thingsController = new ThingsController();
+
+thingsRouter.get("/", thingsController.getThings);
 
 thingsRouter.get("/:thingId", (req, res) => {
   const thingId = parseInt(req.params.thingId, 10);
